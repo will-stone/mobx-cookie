@@ -1,0 +1,34 @@
+{
+  "name": "mobx-cookie",
+  "version": "1.0.0",
+  "description": "Syncs a cookie's value with a MobX observable, allowing observers to react to its changes.",
+  "main": "lib/mobx-cookie.js",
+  "repository": "https://github.com/will-stone/mobx-cookie.git",
+  "author": "Will Stone <will@wstone.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-remove-comments": "^2.0.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "prettier": "^1.10.2"
+  },
+  "dependencies": {
+    "babel-preset-stage-1": "^6.24.1",
+    "js-cookie": "^2.2.0",
+    "moment": "^2.20.1"
+  },
+  "peerDependencies": {
+    "mobx": "^3.4.1"
+  },
+  "scripts": {
+    "prettier": "prettier --config .prettierrc --write src/**/*.js",
+    "build": "babel src -d lib"
+  }
+}
