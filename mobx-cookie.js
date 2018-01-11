@@ -1,6 +1,6 @@
 /**
  * @file Syncs a cookie's value with a MobX observable, allowing observers to
- * react to its changes.
+ * react when it changes.
  * @author Will Stone
  * @license MIT
  */
