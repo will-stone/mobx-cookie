@@ -4,7 +4,7 @@ Syncs a cookie's value with a MobX observable, allowing observers to react to it
 # Example
 
 ```js
-import { action, computed, extendObservable } from 'mobx'
+import { action, autorun, computed, extendObservable } from 'mobx'
 import Cookie from 'mobx-cookie' // not currently published to NPM, download locally
 
 class Store {
@@ -12,11 +12,11 @@ class Store {
     extendObservable(this, {
       cookieName: new Cookie('cookieName'),
     })
+    
+    autorun('Log cookie', () => {
+      console.log(this.cookieName.get())
+    })
   }
-  
-  logCookie = action('Log cookie', () => {
-    console.log(this.cookieName.get())
-  })
   
   setCookie = action('Set cookie', value => {
     this.cookieName.set(value, {expires: 2}) // 2 day expiry
