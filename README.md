@@ -1,4 +1,4 @@
-<img src="logo/mobx-cookie.svg" alt="logo" height="120" width="120" align="right" />
+<img src="logo/mobx-cookie.png" alt="logo" height="120" width="120" align="right" />
 
 # mobx-cookie
 

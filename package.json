@@ -1,6 +1,6 @@
 {
   "name": "mobx-cookie",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description":
     "Syncs a cookie's value with a MobX observable, allowing observers to react to its changes.",
   "main": "lib/mobx-cookie.js",
@@ -37,7 +37,6 @@
   "scripts": {
     "prettier": "prettier --config .prettierrc --write src/**/*.js",
     "build": "babel src -d lib",
-    "publish": "npm publish",
     "start": "parcel dev/index.html"
   }
 }
