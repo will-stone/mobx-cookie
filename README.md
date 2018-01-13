@@ -1,3 +1,5 @@
+<img src="logo/mobx-cookie.svg" alt="logo" height="120" width="120" align="right" />
+
 # mobx-cookie
 
 Syncs a cookie's value with a MobX observable, allowing observers to react to its changes.
