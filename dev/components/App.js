@@ -4,14 +4,16 @@ import React from 'react'
 import moment from 'moment'
 
 const App = ({ store }) => {
-  console.log(store.cookie)
   return (
     <div>
-      <div>Cookie: {store.cookie}</div>
+      <pre>Cookie: {store.cookie.get()}</pre>
       <div>
         <button onClick={() => store.setCookie(moment().format('x'))}>
-          change cookie to current timestamp
+          Set cookie to current timestamp
         </button>
+      </div>
+      <div>
+        <button onClick={() => store.removeCookie()}>Remove cookie</button>
       </div>
     </div>
   )

@@ -1,17 +1,24 @@
-import { action, computed, extendObservable } from 'mobx'
+import { action, autorun, extendObservable } from 'mobx'
 
 import Cookie from '../lib/mobx-cookie'
 
 class Store {
   constructor() {
     extendObservable(this, {
-      test: new Cookie('test'),
-      cookie: computed(() => this.test.get())
+      cookie: new Cookie('cookie')
+    })
+
+    autorun('Log cookie', () => {
+      console.log(this.cookie.get())
     })
   }
 
-  setCookie = action(value => {
-    this.test.set(value)
+  setCookie = action('Set cookie', value => {
+    this.cookie.set(value)
+  })
+
+  removeCookie = action('Remove cookie', value => {
+    this.cookie.remove()
   })
 }
 
