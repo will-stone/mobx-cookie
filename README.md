@@ -120,3 +120,5 @@ MIT. See the [LICENSE](https://github.com/will-stone/mobx-cookie/blob/master/LIC
 # Credits
 
 Thanks go to the creators of the two dependecies, [js-cookie](https://github.com/js-cookie/js-cookie) and [moment.js](https://momentjs.com/), and of course to [Michel Weststrate](https://github.com/mweststrate) for [MobX](https://mobx.js.org/).
+
+The logo is comprised of MobX's official logo's background by [osenvosem](https://github.com/osenvosem) and a cookie icon from [icons8](https://icons8.com).

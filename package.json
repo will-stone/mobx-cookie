@@ -1,6 +1,6 @@
 {
   "name": "mobx-cookie",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description":
     "Syncs a cookie's value with a MobX observable, allowing observers to react to its changes.",
   "main": "lib/mobx-cookie.js",
