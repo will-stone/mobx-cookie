@@ -1,6 +1,9 @@
-import { action, autorun, extendObservable } from 'mobx'
+import {
+  action, //autorun,
+  extendObservable
+} from 'mobx'
 
-import Cookie from '../lib/mobx-cookie'
+import Cookie from '../src/mobx-cookie'
 
 class Store {
   constructor() {
@@ -8,13 +11,13 @@ class Store {
       cookie: new Cookie('cookie')
     })
 
-    autorun('Log cookie', () => {
-      console.log(this.cookie.get())
-    })
+    // autorun('Log cookie', () => {
+    //   console.log(this.cookie.get())
+    // })
   }
 
   setCookie = action('Set cookie', value => {
-    this.cookie.set(value)
+    this.cookie.set(value, { expires: 0.00069445 })
   })
 
   removeCookie = action('Remove cookie', value => {
