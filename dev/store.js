@@ -3,7 +3,7 @@ import {
   extendObservable
 } from 'mobx'
 
-import Cookie from '../src/mobx-cookie'
+import Cookie from '../lib/mobx-cookie'
 
 class Store {
   constructor() {
