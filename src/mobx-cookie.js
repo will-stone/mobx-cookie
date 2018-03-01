@@ -103,7 +103,7 @@ class MobxCookie {
         .add(ms, 'ms')
         .format()
     } else {
-      moment(expires).format()
+      return moment(expires).format()
     }
   }
 
