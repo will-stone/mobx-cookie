@@ -50,7 +50,7 @@ class MobxCookie {
     this._clearTimeout()
     this.value = value
     jsCookie.set(this.name, this.value, options)
-    if (options.expires) {
+    if (options && options.expires) {
       // set _expires_ cookie, so that timer can be synced on reload.
       const expires = this._expiresToDateTime(options.expires)
       jsCookie.set(this.name + '-expires', expires, {
