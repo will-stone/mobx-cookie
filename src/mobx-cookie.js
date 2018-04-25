@@ -46,7 +46,7 @@ class MobxCookie {
    * @param {*} value Cookie's value payload
    * @param {Object} options (optional) options to send to js-cookie
    */
-  set = action('[MOBX-COOKIE] Set', (value, options) => {
+  set = action('[MOBX-COOKIE] Set', (value, options = {}) => {
     this._clearTimeout()
     this.value = value
     jsCookie.set(this.name, this.value, options)
