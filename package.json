@@ -37,6 +37,6 @@
   "scripts": {
     "prettier": "prettier --config .prettierrc --write src/**/*.js",
     "build": "babel src -d lib",
-    "start": "parcel dev/index.html"
+    "start": "parcel demo/index.html"
   }
 }
