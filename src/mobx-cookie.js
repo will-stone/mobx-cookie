@@ -7,10 +7,8 @@
 
 // A simple, lightweight JavaScript API for handling browser cookies
 import jsCookie from 'js-cookie'
-
 // Simple, scalable state management
-import { action, extendObservable } from 'mobx'
-
+import { action, decorate, extendObservable } from 'mobx'
 // Parse, validate, manipulate, and display dates and times in JavaScript
 import moment from 'moment'
 
@@ -32,10 +30,14 @@ class MobxCookie {
   }
 
   /**
-   * Get
+   * [DEPRECATED] Get
    * Use this to observe the value of the cookie
    */
   get() {
+    console.warn(
+      `[MOBX-COOKIE] The 'get' method has been deprecated.
+      Observe the value directly. e.g. store.cookie.value`,
+    )
     return this.value
   }
 
@@ -46,7 +48,7 @@ class MobxCookie {
    * @param {*} value Cookie's value payload
    * @param {Object} options (optional) options to send to js-cookie
    */
-  set = action('[MOBX-COOKIE] Set', (value, options = {}) => {
+  set = (value, options = {}) => {
     this._clearTimeout()
     this.value = value
     jsCookie.set(this.name, this.value, options)
@@ -58,18 +60,18 @@ class MobxCookie {
       })
       this._startTimeout(options.expires)
     }
-  })
+  }
 
   /**
    * Remove
    * Remove the cookie and reset the observable and timer
    */
-  remove = action('[MOBX-COOKIE] Remove', () => {
+  remove = () => {
     this._clearTimeout()
     this.value = undefined
     jsCookie.remove(this.name)
     jsCookie.remove(this.name + '-expires')
-  })
+  }
 
   /**
    * Expires To Milliseconds
@@ -138,5 +140,10 @@ class MobxCookie {
     this._timeout = null
   }
 }
+
+decorate(MobxCookie, {
+  set: action,
+  remove: action,
+})
 
 export default MobxCookie
