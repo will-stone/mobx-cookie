@@ -5006,11 +5006,6 @@ mobx@^4.5.1:
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-4.5.1.tgz#c7340fd6c272d1bf498e9391aadbcd0f8acbca0d"
   integrity sha512-ZEanf7JIs2ycvcmyL5fQzLhjP6CWBMpMVUlcrzSlkvWW1RRhPLQexcgKShFRR59Q25GfoBgb/p0FHKQxAUM8mw==
 
-moment@^2.20.1:
-  version "2.20.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
-  integrity sha512-Yh9y73JRljxW5QxN08Fner68eFLxM5ynNOAw2LbIB1YAGeQzZT8QFSUvkAz609Zf+IHhhaUxqZK8dG3W/+HEvg==
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"

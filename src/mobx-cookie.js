@@ -9,8 +9,8 @@
 import jsCookie from 'js-cookie'
 // Simple, scalable state management
 import { action, decorate, extendObservable } from 'mobx'
-// Parse, validate, manipulate, and display dates and times in JavaScript
-import moment from 'moment'
+
+const DAY_IN_MS = 86400000
 
 class MobxCookie {
   /**
@@ -76,36 +76,29 @@ class MobxCookie {
   /**
    * Expires To Milliseconds
    * Internal function to convert a js-cookie expires value to milliseconds.
-   * @param {string|number} expires - number of days or date-time.
+   * @param {Date|number} expires - number of days or date-time.
    * @returns {number} - milliseconds
    */
   _expiresToMs(expires) {
     if (typeof expires === 'number') {
-      const duration = moment.duration(expires, 'days')
-      const ms = duration.asMilliseconds()
-      return moment()
-        .add(ms, 'ms')
-        .diff(moment())
+      return expires * DAY_IN_MS
     } else {
-      return moment(expires).diff(moment())
+      const nowInMs = +new Date()
+      return +expires - nowInMs
     }
   }
 
   /**
    * Expires To Date Time
-   * Internal function to convert a js-cookie expires value to date-time.
-   * @param {string|number} expires - number of days or date-time.
+   * Internal function to convert a js-cookie expires value to string date-time.
+   * @param {Date|number} expires - number of days or date-time.
    * @returns {string} - date-time.
    */
   _expiresToDateTime(expires) {
     if (typeof expires === 'number') {
-      const duration = moment.duration(expires, 'days')
-      const ms = duration.asMilliseconds()
-      return moment()
-        .add(ms, 'ms')
-        .format()
+      return new Date(+new Date() + expires * DAY_IN_MS).toString()
     } else {
-      return moment(expires).format()
+      return expires
     }
   }
 
@@ -116,19 +109,19 @@ class MobxCookie {
   _syncTimeout() {
     const expires = jsCookie.get(this.name + '-expires')
     if (expires) {
-      this._startTimeout(expires)
+      this._startTimeout(new Date(expires))
     }
   }
 
   /**
    * Start Timeout
    * Internal function for creating the cookie expiry timer
-   * @param {string|number} - number of days or date-time.
+   * @param {Date|number} - number of days or date-time.
    */
   _startTimeout(expires) {
     const timeoutDuration = this._expiresToMs(expires)
     // start timer
-    this._timeout = setTimeout(() => this.remove(), timeoutDuration)
+    this._timeout = setTimeout(this.remove, timeoutDuration)
   }
 
   /**

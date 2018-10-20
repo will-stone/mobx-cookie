@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - MobX 4 support.
+### Removed
+- Moment dependency.
 ### Deprecated
 - The `get` method has been deprecated. Observe the value directly. e.g. `store.cookie.value`.
 

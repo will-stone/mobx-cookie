@@ -9,9 +9,7 @@ class Store {
   }
 
   setTimestamp = value => {
-    const currentTime = new Date()
-    const Time = currentTime.setTime(currentTime.getTime() + 1000 * 10)
-    this.cookie.set(value, { expires: new Date(Time) })
+    this.cookie.set(value, { expires: new Date(+new Date() + 10000) })
   }
 
   unsetTimestamp = () => {

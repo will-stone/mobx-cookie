@@ -6,7 +6,7 @@ import store from './store'
 import { configureDevtool } from 'mobx-react-devtools'
 
 configureDevtool({
-  logEnabled: true,
+  logEnabled: false,
   updatesEnabled: false,
 })
 
