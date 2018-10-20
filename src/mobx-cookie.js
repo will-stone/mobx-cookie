@@ -30,13 +30,14 @@ class MobxCookie {
   }
 
   /**
-   * [DEPRECATED] Get
+   * [DEPRECATED] - Observe the value directly, e.g. store.cookie.value
+   * Get
    * Use this to observe the value of the cookie
    */
   get() {
     console.warn(
       `[MOBX-COOKIE] The 'get' method has been deprecated.
-      Observe the value directly. e.g. store.cookie.value`,
+      Observe the value directly, e.g. store.cookie.value`,
     )
     return this.value
   }
