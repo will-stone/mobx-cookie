@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "strict": true,
+    "module": "commonjs",
+    "removeComments": true,
+    "jsx": "react",
+    "noImplicitAny": true,
+    "lib": ["es2015"],
+    "declaration": true,
+    "outDir": "lib",
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "demo", ".cache"]
+}

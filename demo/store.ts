@@ -1,7 +1,7 @@
 import { action, decorate, observable, computed } from 'mobx'
-import Cookie from '../src/mobx-cookie'
+import Cookie from '../lib/mobx-cookie'
 
-class Store {
+export class Store {
   cookie = new Cookie('cookie')
 
   get timestamp() {

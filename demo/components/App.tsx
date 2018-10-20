@@ -1,7 +1,12 @@
 import { inject, observer } from 'mobx-react'
 import React from 'react'
+import { Store } from '../store'
 
-const App = ({ store }) => {
+interface IAppProps {
+  store?: Store
+}
+
+const App: React.SFC<IAppProps> = ({ store }) => {
   return (
     <div>
       <pre>Cookie: {store.timestamp}</pre>

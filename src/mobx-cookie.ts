@@ -6,21 +6,21 @@
  */
 
 // A simple, lightweight JavaScript API for handling browser cookies
-import jsCookie from 'js-cookie'
+import * as jsCookie from 'js-cookie'
 // Simple, scalable state management
 import { action, decorate, extendObservable } from 'mobx'
+
+type TExpires = number | Date
 
 const DAY_IN_MS = 86400000
 
 class MobxCookie {
-  /**
-   * @param {*} name cookie's name
-   * @param {*} options (optional) options to send to js-cookie
-   */
-  constructor(name, options) {
-    this.name = name // name of set cookie
-    this.options = options // options to send to js-cookie
-    this._timeout = null // internal timer
+  value?: string
+  _name: string
+  _timeout?: NodeJS.Timeout
+
+  constructor(name: string) {
+    this._name = name // name of set cookie
 
     extendObservable(this, {
       value: jsCookie.get(name), // observable to keep in-sync with cookie value
@@ -46,17 +46,15 @@ class MobxCookie {
    * Set
    * Set the value (and optional options) of the cookie. Also starts the
    * removal timer if options.expires is set
-   * @param {*} value Cookie's value payload
-   * @param {Object} options (optional) options to send to js-cookie
    */
-  set = (value, options = {}) => {
+  set = (value: string, options: jsCookie.CookieAttributes = {}) => {
     this._clearTimeout()
     this.value = value
-    jsCookie.set(this.name, this.value, options)
+    jsCookie.set(this._name, this.value, options)
     if (options.expires) {
       // set _expires_ cookie, so that timer can be synced on reload.
       const expires = this._expiresToDateTime(options.expires)
-      jsCookie.set(this.name + '-expires', expires, {
+      jsCookie.set(this._name + '-expires', expires, {
         expires: options.expires,
       })
       this._startTimeout(options.expires)
@@ -70,17 +68,15 @@ class MobxCookie {
   remove = () => {
     this._clearTimeout()
     this.value = undefined
-    jsCookie.remove(this.name)
-    jsCookie.remove(this.name + '-expires')
+    jsCookie.remove(this._name)
+    jsCookie.remove(this._name + '-expires')
   }
 
   /**
    * Expires To Milliseconds
    * Internal function to convert a js-cookie expires value to milliseconds.
-   * @param {Date|number} expires - number of days or date-time.
-   * @returns {number} - milliseconds
    */
-  _expiresToMs(expires) {
+  _expiresToMs(expires: TExpires) {
     if (typeof expires === 'number') {
       return expires * DAY_IN_MS
     } else {
@@ -95,7 +91,7 @@ class MobxCookie {
    * @param {Date|number} expires - number of days or date-time.
    * @returns {string} - date-time.
    */
-  _expiresToDateTime(expires) {
+  _expiresToDateTime(expires: TExpires) {
     if (typeof expires === 'number') {
       return new Date(+new Date() + expires * DAY_IN_MS).toString()
     } else {
@@ -108,7 +104,7 @@ class MobxCookie {
    * Internal function to start timer if an _expires_ cookie exists.
    */
   _syncTimeout() {
-    const expires = jsCookie.get(this.name + '-expires')
+    const expires = jsCookie.get(this._name + '-expires')
     if (expires) {
       this._startTimeout(new Date(expires))
     }
@@ -117,9 +113,8 @@ class MobxCookie {
   /**
    * Start Timeout
    * Internal function for creating the cookie expiry timer
-   * @param {Date|number} - number of days or date-time.
    */
-  _startTimeout(expires) {
+  _startTimeout(expires: TExpires) {
     const timeoutDuration = this._expiresToMs(expires)
     // start timer
     this._timeout = setTimeout(this.remove, timeoutDuration)
@@ -130,8 +125,8 @@ class MobxCookie {
    * Internal function for destroying the cookie expiry timer
    */
   _clearTimeout() {
-    clearTimeout(this._timeout)
-    this._timeout = null
+    this._timeout && clearTimeout(this._timeout)
+    this._timeout = undefined
   }
 }
 
