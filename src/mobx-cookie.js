@@ -25,7 +25,7 @@ class MobxCookie {
     this._timeout = null // internal timer
 
     extendObservable(this, {
-      value: jsCookie.get(name) // observable to keep in-sync with cookie value
+      value: jsCookie.get(name), // observable to keep in-sync with cookie value
     })
 
     this._syncTimeout()
@@ -54,7 +54,7 @@ class MobxCookie {
       // set _expires_ cookie, so that timer can be synced on reload.
       const expires = this._expiresToDateTime(options.expires)
       jsCookie.set(this.name + '-expires', expires, {
-        expires: options.expires
+        expires: options.expires,
       })
       this._startTimeout(options.expires)
     }

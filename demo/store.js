@@ -1,11 +1,11 @@
-import { action, extendObservable } from 'mobx'
+import { action, extendObservable, decorate, observable } from 'mobx'
 
-import Cookie from '../lib/mobx-cookie'
+import Cookie from '../src/mobx-cookie'
 
 class Store {
   constructor() {
     extendObservable(this, {
-      cookie: new Cookie('cookie')
+      cookie: new Cookie('cookie'),
     })
   }
 
@@ -19,5 +19,11 @@ class Store {
     this.cookie.remove()
   })
 }
+
+decorate(Store, {
+  cookie: observable,
+  setCookie: action,
+  removeCookie: action,
+})
 
 export default new Store()
