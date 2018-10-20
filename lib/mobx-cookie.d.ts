@@ -1,6 +1,5 @@
 /// <reference types="node" />
 import * as jsCookie from 'js-cookie';
-declare type TExpires = number | Date;
 declare class MobxCookie {
     value?: string;
     _name: string;
@@ -9,10 +8,10 @@ declare class MobxCookie {
     get(): string | undefined;
     set: (value: string, options?: jsCookie.CookieAttributes) => void;
     remove: () => void;
-    _expiresToMs(expires: TExpires): number;
-    _expiresToDateTime(expires: TExpires): string | Date;
+    _expiresToMs(expires: number | Date): number;
+    _expiresToDateTime(expires: number | Date): string | Date;
     _syncTimeout(): void;
-    _startTimeout(expires: TExpires): void;
+    _startTimeout(expires: number | Date): void;
     _clearTimeout(): void;
 }
 export default MobxCookie;
