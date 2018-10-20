@@ -737,6 +737,11 @@
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.0.tgz#ae2eabaa4bc892ba553c664cca21e6ee5224e5b5"
   integrity sha512-k0umv2jvUvl1/OdOgFwEIPF6qKllf2jEsrd5ka9aVQo2ilxaBb2vsh1AmAAZ3eqt54vNrdbGW5QPOKJBmCNS7g==
 
+"@types/mockdate@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/mockdate/-/mockdate-2.0.0.tgz#aaf388a1ead3b0f5ed6dc1611956ea7b40a57d3c"
+  integrity sha1-qvOIoerTsPXtbcFhGVbqe0ClfTw=
+
 "@types/node@*", "@types/node@^10.11.7":
   version "10.12.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"
@@ -4639,6 +4644,11 @@ mobx@^4.5.1:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-4.5.1.tgz#c7340fd6c272d1bf498e9391aadbcd0f8acbca0d"
   integrity sha512-ZEanf7JIs2ycvcmyL5fQzLhjP6CWBMpMVUlcrzSlkvWW1RRhPLQexcgKShFRR59Q25GfoBgb/p0FHKQxAUM8mw==
+
+mockdate@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-2.0.2.tgz#5ae0c0eaf8fe23e009cd01f9889b42c4f634af12"
+  integrity sha1-WuDA6vj+I+AJzQH5iJtCxPY0rxI=
 
 ms@2.0.0:
   version "2.0.0"
