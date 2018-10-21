@@ -20,7 +20,7 @@ import { action, decorate, observable, computed } from 'mobx'
 import Cookie from 'mobx-cookie'
 
 class Store {
-  cookie = new Cookie('name of cookie')
+  cookie = new Cookie('thing')
 
   get thing() {
     return this.cookie.value
@@ -76,7 +76,7 @@ e.g.
 ```js
 @observable cookie = new Cookie('name of cookie in browser')
 // or
-cookie = new Cookie('name of cookie')
+cookie = new Cookie('name of cookie in browser')
 // and decorate
 decorate(Store, {
   cookie: observable,
