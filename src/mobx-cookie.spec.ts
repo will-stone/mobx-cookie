@@ -1,12 +1,20 @@
 import MobXCookie from './mobx-cookie'
 import * as jsCookie from 'js-cookie'
 
+jest.useFakeTimers()
+
 const MockDate = require('mockdate')
 
-// Freeze time
-MockDate.set('Tue Jan 02 2018 00:00:00 GMT+0000 (Greenwich Mean Time)')
-
 describe('mobx-cookie', () => {
+  beforeEach(() => {
+    // Freeze time
+    MockDate.set('Tue Jan 02 2018 00:00:00 GMT+0000 (Greenwich Mean Time)')
+  })
+
+  afterEach(() => {
+    MockDate.reset()
+  })
+
   const setup = () => {
     const mockJsCookie = jsCookie
     mockJsCookie.get = jest.fn()
