@@ -76,6 +76,20 @@ describe('mobx-cookie', () => {
     expect(mobxCookie.value).toBe(VALUE)
   })
 
+  it('calls remove method when expiry is up', () => {
+    const { mobxCookie, mockJsCookie, COOKIE_NAME } = setup()
+    const VALUE = 'VALUE'
+    const options = {
+      expires: new Date(
+        'Tue Jan 02 2018 00:00:10 GMT+0000 (Greenwich Mean Time)',
+      ),
+    }
+    mobxCookie.remove = jest.fn()
+    mobxCookie.set(VALUE, options)
+    jest.runAllTimers()
+    expect(mobxCookie.remove).toHaveBeenCalledTimes(1)
+  })
+
   it('removes cookie', () => {
     const { mobxCookie, mockJsCookie, COOKIE_NAME } = setup()
     mobxCookie.set('VALUE')
