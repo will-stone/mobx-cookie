@@ -34,8 +34,8 @@
     "start": "parcel demo/index.html",
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest --watchAll",
-    "test:ci": "jest",
+    "test-watch": "jest --watchAll",
+    "test": "jest",
     "typecheck": "tsc --noEmit --skipLibCheck",
     "prettier": "prettier --config .prettierrc --write 'src/**/*.{js,ts}'"
   }
