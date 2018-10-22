@@ -127,7 +127,7 @@ for more information.
 
 # Credits
 
-Thanks go to the creators of the two dependecies,
+Thanks go to the creators of the dependency,
 [js-cookie](https://github.com/js-cookie/js-cookie), and of course to
 [Michel Weststrate](https://github.com/mweststrate) for
 [MobX](https://mobx.js.org/).
