@@ -68,7 +68,7 @@ import Cookie from 'mobx-cookie'
 Initialise and set the key name of the cookie
 
 ```js
-new Cookie(name[, options]) // see set() method for options
+new Cookie(name)
 ```
 
 e.g.
