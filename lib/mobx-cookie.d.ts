@@ -5,13 +5,13 @@ declare class MobxCookie {
     _name: string;
     _timeout?: NodeJS.Timeout;
     constructor(name: string);
-    get(): string | undefined;
+    get: () => string | undefined;
     set: (value: string, options?: jsCookie.CookieAttributes) => void;
     remove: () => void;
-    _expiresToMs(expires: number | Date): number;
-    _expiresToDateTime(expires: number | Date): string | Date;
-    _syncTimeout(): void;
-    _startTimeout(expires: number | Date): void;
-    _clearTimeout(): void;
+    _expiresToMs: (expires: number | Date) => number;
+    _expiresToDateTime: (expires: number | Date) => string | Date;
+    _syncTimeout: () => void;
+    _startTimeout: (expires: number | Date) => void;
+    _clearTimeout: () => void;
 }
 export default MobxCookie;

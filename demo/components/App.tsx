@@ -1,22 +1,31 @@
 import { inject, observer } from 'mobx-react'
-import React from 'react'
+import React, { useCallback } from 'react'
+
 import { Store } from '../store'
 
-interface IAppProps {
+interface AppProps {
   store?: Store
 }
 
-const App: React.SFC<IAppProps> = ({ store }) => {
+const App: React.SFC<AppProps> = ({ store }) => {
+  const handleSetTimestamp = useCallback(() => {
+    store.setTimestamp(String(Number(new Date())))
+  }, [store])
+
+  const handleRemoveCookie = useCallback(() => store.unsetTimestamp(), [store])
+
   return (
     <div>
       <pre>Cookie: {store.timestamp}</pre>
       <div>
-        <button onClick={() => store.setTimestamp(+new Date())}>
+        <button onClick={handleSetTimestamp} type="button">
           Set cookie to current timestamp
         </button>
       </div>
       <div>
-        <button onClick={store.unsetTimestamp}>Remove cookie</button>
+        <button onClick={handleRemoveCookie} type="button">
+          Remove cookie
+        </button>
       </div>
     </div>
   )
