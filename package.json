@@ -8,7 +8,7 @@
   "main": "lib/mobx-cookie.js",
   "scripts": {
     "build": "tsc",
-    "lint": "ws-scripts lint",
+    "lint": "eslint . --ignore-path .gitignore --ignore-pattern '*.d.ts' --ignore-pattern 'lib/*'",
     "start": "parcel demo/index.html",
     "test": "jest",
     "test-watch": "jest --watchAll",
@@ -17,12 +17,25 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "ws-scripts pre-commit"
+      "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "prettier": "@will-stone/prettier-config",
   "eslintConfig": {
     "extends": [
-      "./node_modules/ws-scripts/dist/config/eslintrc"
+      "@will-stone/eslint-config",
+      "@will-stone/eslint-config/node",
+      "@will-stone/eslint-config/react",
+      "@will-stone/eslint-config/jest",
+      "@will-stone/eslint-config/typescript"
     ]
   },
   "dependencies": {
@@ -35,16 +48,21 @@
     "@types/node": "^13.9.0",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
+    "@will-stone/eslint-config": "^1.2.2",
+    "@will-stone/prettier-config": "^3.0.1",
+    "eslint": "^7.0.0",
+    "husky": "^4.2.5",
     "jest": "^25.1.0",
+    "lint-staged": "^10.2.2",
     "mobx": "^5.15.4",
     "mobx-react": "^6.1.8",
     "mockdate": "^2.0.5",
     "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3",
-    "ws-scripts": "^1.12.0"
+    "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "mobx": "^5.0.0"
