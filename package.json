@@ -48,7 +48,7 @@
     "@types/node": "^13.9.0",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
-    "@will-stone/eslint-config": "^1.2.2",
+    "@will-stone/eslint-config": "^1.7.1",
     "@will-stone/prettier-config": "^3.0.1",
     "eslint": "^7.0.0",
     "husky": "^4.2.5",

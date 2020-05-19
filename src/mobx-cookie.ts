@@ -1,6 +1,5 @@
-/* eslint-disable no-undefined */
-/* eslint-disable no-invalid-this */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable @typescript-eslint/no-invalid-this -- this is okay in class properties here */
+/* eslint-disable no-underscore-dangle -- using underscores to denote internal properties */
 
 /**
  * @file Syncs a cookie's value with a MobX observable, allowing observers to
