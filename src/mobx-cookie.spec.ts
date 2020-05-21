@@ -2,7 +2,13 @@
 import * as jsCookie from 'js-cookie'
 import * as MockDate from 'mockdate'
 
-import MobXCookie from './mobx-cookie'
+import MobXCookie from '.'
+
+jest.mock('js-cookie', () => ({
+  get: jest.fn(),
+  set: jest.fn(),
+  remove: jest.fn(),
+}))
 
 jest.useFakeTimers()
 
@@ -18,9 +24,6 @@ describe('mobx-cookie', () => {
 
   const setup = () => {
     const mockJsCookie = jsCookie
-    jest.spyOn(mockJsCookie, 'get').mockImplementation()
-    jest.spyOn(mockJsCookie, 'set').mockImplementation()
-    jest.spyOn(mockJsCookie, 'remove').mockImplementation()
     const COOKIE_NAME = 'COOKIE_NAME'
     const mobxCookie = new MobXCookie(COOKIE_NAME)
     return {
