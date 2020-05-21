@@ -7,8 +7,9 @@
   "author": "Will Stone <contact@wstone.io>",
   "main": "dist/mobx-cookie.js",
   "scripts": {
-    "build": "tsc",
-    "lint": "eslint . --ignore-path .gitignore --ignore-pattern '*.d.ts'",
+    "prebuild": "rimraf ./pkg",
+    "build": "pika build",
+    "lint": "eslint . --ignore-path .gitignore",
     "prerelease": "yarn build",
     "release": "np",
     "start": "parcel demo/index.html",
@@ -42,6 +43,9 @@
     "js-cookie": "^2.2.1"
   },
   "devDependencies": {
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-web": "^0.9.2",
+    "@pika/plugin-ts-standard-pkg": "^0.9.2",
     "@types/jest": "^25.1.4",
     "@types/js-cookie": "^2.2.5",
     "@types/mockdate": "^2.0.0",
@@ -62,10 +66,24 @@
     "prettier": "^2.0.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "rimraf": "^3.0.2",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "mobx": "^5.0.0"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  },
+  "np": {
+    "contents": "pkg"
   }
 }
