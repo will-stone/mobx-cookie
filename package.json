@@ -10,7 +10,7 @@
     "prebuild": "rimraf ./pkg",
     "build": "pika build",
     "lint": "eslint . --ignore-path .gitignore",
-    "prerelease": "yarn lint && yarn typecheck && yarn build",
+    "prerelease": "yarn lint && yarn typecheck",
     "release": "np",
     "start": "parcel demo/index.html",
     "test": "jest",
