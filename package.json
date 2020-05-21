@@ -14,7 +14,8 @@
     "release": "np",
     "start": "parcel demo/index.html",
     "test": "jest",
-    "typecheck": "tsc --noEmit --skipLibCheck"
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "version": "yarn build"
   },
   "husky": {
     "hooks": {
