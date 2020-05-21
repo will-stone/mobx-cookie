@@ -1,6 +1,6 @@
 import { action, computed, decorate, observable } from 'mobx'
 
-import Cookie from '../lib/mobx-cookie'
+import Cookie from '../src/mobx-cookie'
 
 export class Store {
   cookie: Cookie = new Cookie('cookie')
