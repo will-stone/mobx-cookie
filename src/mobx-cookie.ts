@@ -39,7 +39,7 @@ class MobxCookie {
    * Get
    * Use this to observe the value of the cookie
    */
-  get = () => {
+  get = (): string | undefined => {
     // eslint-disable-next-line no-console
     console.warn(
       `[MOBX-COOKIE] The 'get' method has been deprecated.
@@ -53,7 +53,7 @@ class MobxCookie {
    * Set the value (and optional options) of the cookie. Also starts the
    * removal timer if options.expires is set
    */
-  set = (value: string, options: jsCookie.CookieAttributes = {}) => {
+  set = (value: string, options: jsCookie.CookieAttributes = {}): void => {
     this._clearTimeout()
     this.value = value
     jsCookie.set(this._name, this.value, options)
@@ -71,7 +71,7 @@ class MobxCookie {
    * Remove
    * Remove the cookie and reset the observable and timer
    */
-  remove = () => {
+  remove = (): void => {
     this._clearTimeout()
     this.value = undefined
     jsCookie.remove(this._name)
@@ -107,7 +107,7 @@ class MobxCookie {
    * Sync Timeout
    * Internal function to start timer if an _expires_ cookie exists.
    */
-  _syncTimeout = () => {
+  _syncTimeout = (): void => {
     const expires = jsCookie.get(`${this._name}-expires`)
     if (expires) {
       this._startTimeout(new Date(expires))
@@ -118,7 +118,7 @@ class MobxCookie {
    * Start Timeout
    * Internal function for creating the cookie expiry timer
    */
-  _startTimeout = (expires: number | Date) => {
+  _startTimeout = (expires: number | Date): void => {
     const timeoutDuration = this._expiresToMs(expires)
     // start timer
     this._timeout = setTimeout(this.remove, timeoutDuration)
@@ -128,7 +128,7 @@ class MobxCookie {
    * Clear Timeout
    * Internal function for destroying the cookie expiry timer
    */
-  _clearTimeout = () => {
+  _clearTimeout = (): void => {
     if (this._timeout) {
       clearTimeout(this._timeout)
     }

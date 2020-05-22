@@ -5,15 +5,15 @@ import Cookie from '../src/mobx-cookie'
 export class Store {
   cookie: Cookie = new Cookie('cookie')
 
-  get timestamp() {
+  get timestamp(): string {
     return this.cookie.value
   }
 
-  setTimestamp(value: string) {
+  setTimestamp(value: string): void {
     this.cookie.set(value, { expires: new Date(Number(new Date()) + 10000) })
   }
 
-  unsetTimestamp() {
+  unsetTimestamp(): void {
     this.cookie.remove()
   }
 }
