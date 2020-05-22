@@ -56,7 +56,7 @@
     "@types/jest": "^25.2.3",
     "@types/js-cookie": "^2.2.5",
     "@types/mockdate": "^2.0.0",
-    "@types/node": "^13.9.0",
+    "@types/node": "^14.0.5",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
     "@will-stone/eslint-config": "^1.7.1",
