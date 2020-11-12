@@ -78,7 +78,7 @@
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "mobx": "^5.0.0"
+    "mobx": "^6.0.0"
   },
   "@pika/pack": {
     "pipeline": [
