@@ -16,17 +16,26 @@ npm install mobx-cookie # npm v5+
 # Example
 
 ```js
-import { action, decorate, observable, computed } from 'mobx'
+import { action, computed, makeObservable, observable } from 'mobx'
 import Cookie from 'mobx-cookie'
 
 class Store {
   cookie = new Cookie('thing')
 
+  constructor() {
+    makeObservable(this, {
+      cookie: observable,
+      timestamp: computed,
+      setTimestamp: action,
+      unsetTimestamp: action,
+    })
+  }
+
   get thing() {
     return this.cookie.value
   }
 
-  setThing = value => {
+  setThing = (value) => {
     this.cookie.set(value, { expires: 2 }) // 2 day expiry
   }
 
@@ -34,13 +43,6 @@ class Store {
     this.cookie.remove()
   }
 }
-
-decorate(Store, {
-  cookie: observable,
-  thing: computed,
-  setThing: action,
-  unsetThing: action,
-})
 
 const store = new Store()
 

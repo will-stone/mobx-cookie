@@ -11,7 +11,7 @@
 // A simple, lightweight JavaScript API for handling browser cookies
 import * as jsCookie from 'js-cookie'
 // Simple, scalable state management
-import { action, decorate, extendObservable } from 'mobx'
+import { action, extendObservable, makeObservable } from 'mobx'
 
 const DAY_IN_MS = 86400000
 
@@ -32,6 +32,11 @@ class MobxCookie {
     })
 
     this._syncTimeout()
+
+    makeObservable(this, {
+      set: action,
+      remove: action,
+    })
   }
 
   /**
@@ -136,10 +141,5 @@ class MobxCookie {
     this._timeout = undefined
   }
 }
-
-decorate(MobxCookie, {
-  set: action,
-  remove: action,
-})
 
 export default MobxCookie

@@ -1,9 +1,18 @@
-import { action, computed, decorate, observable } from 'mobx'
+import { action, computed, makeObservable, observable } from 'mobx'
 
 import Cookie from '../src/mobx-cookie'
 
 export class Store {
   cookie: Cookie = new Cookie('cookie')
+
+  constructor() {
+    makeObservable(this, {
+      cookie: observable,
+      timestamp: computed,
+      setTimestamp: action,
+      unsetTimestamp: action,
+    })
+  }
 
   get timestamp(): string {
     return this.cookie.value
@@ -17,12 +26,5 @@ export class Store {
     this.cookie.remove()
   }
 }
-
-decorate(Store, {
-  cookie: observable,
-  timestamp: computed,
-  setTimestamp: action,
-  unsetTimestamp: action,
-})
 
 export default new Store()
