@@ -8,9 +8,9 @@ react to its changes.
 # Install
 
 ```bash
-yarn add mobx-cookie
-# or
 npm install mobx-cookie # npm v5+
+# or
+yarn add mobx-cookie
 ```
 
 # Example
