@@ -14,9 +14,9 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 15.x
 
-    - run: yarn
-    - run: yarn typecheck
-    - run: yarn lint
-    - run: yarn test
+    - run: npm i
+    - run: npm run typecheck
+    - run: npm run lint
+    - run: npm run test
