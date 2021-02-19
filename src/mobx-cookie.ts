@@ -13,7 +13,7 @@ import * as jsCookie from 'js-cookie'
 // Simple, scalable state management
 import { action, extendObservable, makeObservable } from 'mobx'
 
-const DAY_IN_MS = 86400000
+const DAY_IN_MS = 86_400_000
 
 class MobxCookie {
   value?: string
@@ -87,12 +87,12 @@ class MobxCookie {
    * Expires To Milliseconds
    * Internal function to convert a js-cookie expires value to milliseconds.
    */
-  _expiresToMs = (expires: number | Date): number => {
+  _expiresToMs = (expires: Date | number): number => {
     if (typeof expires === 'number') {
       return expires * DAY_IN_MS
     }
 
-    const nowInMs = Number(new Date())
+    const nowInMs = Date.now()
     return Number(expires) - nowInMs
   }
 
@@ -100,9 +100,9 @@ class MobxCookie {
    * Expires To Date Time
    * Internal function to convert a js-cookie expires value to string date-time.
    */
-  _expiresToDateTime = (expires: number | Date): string | Date => {
+  _expiresToDateTime = (expires: Date | number): Date | string => {
     if (typeof expires === 'number') {
-      return new Date(Number(new Date()) + expires * DAY_IN_MS).toString()
+      return new Date(Date.now() + expires * DAY_IN_MS).toString()
     }
 
     return expires
@@ -123,7 +123,7 @@ class MobxCookie {
    * Start Timeout
    * Internal function for creating the cookie expiry timer
    */
-  _startTimeout = (expires: number | Date): void => {
+  _startTimeout = (expires: Date | number): void => {
     const timeoutDuration = this._expiresToMs(expires)
     // start timer
     this._timeout = setTimeout(this.remove, timeoutDuration)
