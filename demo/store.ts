@@ -14,12 +14,12 @@ export class Store {
     })
   }
 
-  get timestamp(): string {
+  get timestamp(): string | undefined {
     return this.cookie.value
   }
 
   setTimestamp(value: string): void {
-    this.cookie.set(value, { expires: new Date(Number(new Date()) + 10000) })
+    this.cookie.set(value, { expires: new Date(Date.now() + 10_000) })
   }
 
   unsetTimestamp(): void {

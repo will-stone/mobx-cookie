@@ -9,19 +9,21 @@ interface AppProps {
 
 const App: React.SFC<AppProps> = ({ store }) => {
   const handleSetTimestamp = useCallback(() => {
-    store.setTimestamp(String(Number(new Date())))
+    store?.setTimestamp(String(Date.now()))
   }, [store])
 
-  const handleRemoveCookie = useCallback(() => store.unsetTimestamp(), [store])
+  const handleRemoveCookie = useCallback(() => store?.unsetTimestamp(), [store])
 
   return (
     <div>
-      <pre>Cookie: {store.timestamp}</pre>
+      <pre>Cookie: {store?.timestamp}</pre>
+
       <div>
         <button onClick={handleSetTimestamp} type="button">
           Set cookie to current timestamp
         </button>
       </div>
+
       <div>
         <button onClick={handleRemoveCookie} type="button">
           Remove cookie
