@@ -6583,22 +6583,22 @@ mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mobx-react-lite@2:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-2.0.7.tgz#1bfb3b4272668e288047cf0c7940b14e91cba284"
-  integrity sha512-YKAh2gThC6WooPnVZCoC+rV1bODAKFwkhxikzgH18wpBjkgTkkR9Sb0IesQAH5QrAEH/JQVmy47jcpQkf2Au3Q==
+mobx-react-lite@^3.1.4:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-3.1.5.tgz#c8023a1ea881a6b936df2f9d72fc3490036b2fb5"
+  integrity sha512-LWub3+lURIvZ3LrAEqyxN4nG5Zr7mUHV5L48PIQdT0+CXLXmGHHV7iB+RDzm3TySr4XbazISgo0wkHdOlrrRWA==
 
-mobx-react@^6.1.8:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-6.2.2.tgz#45e8e7c4894cac8399bba0a91060d7cfb8ea084b"
-  integrity sha512-Us6V4ng/iKIRJ8pWxdbdysC6bnS53ZKLKlVGBqzHx6J+gYPYbOotWvhHZnzh/W5mhpYXxlXif4kL2cxoWJOplQ==
+mobx-react@^7.0.4:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-7.0.4.tgz#de73fc4d2b401c92a3d30e30158ea781a80ca9fa"
+  integrity sha512-T40zOPBs8cC85TV6VX9BD9Fp2pV1ldwFb5Aj7GvwwpDvnF7W2d/pekZ1HaE7DGS9EqbyJPFwPkGVltn9TQnodA==
   dependencies:
-    mobx-react-lite "2"
+    mobx-react-lite "^3.1.4"
 
-mobx@^5.15.4:
-  version "5.15.4"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.15.4.tgz#9da1a84e97ba624622f4e55a0bf3300fb931c2ab"
-  integrity sha512-xRFJxSU2Im3nrGCdjSuOTFmxVDGeqOHL+TyADCGbT0k4HHqGmx5u2yaHNryvoORpI4DfbzjJ5jPmuv+d7sioFw==
+mobx@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.0.3.tgz#cec784bb41acf9eb87b449f1181c9dd8c77ccc0b"
+  integrity sha512-DBMd0NXsMn25HJMUAWBndgJ2wRjOJPbpn6wdzUvZW0PVsyTnrw028XwQfzsjnxnKG+bAXGVNb38rvd+1o0G9uQ==
 
 mockdate@^3.0.2:
   version "3.0.2"
