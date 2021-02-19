@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import * as jsCookie from 'js-cookie'
 import * as MockDate from 'mockdate'
 
