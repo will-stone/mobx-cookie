@@ -1,7 +1,7 @@
 import { inject, observer } from 'mobx-react'
 import React, { useCallback } from 'react'
 
-import { Store } from '../store'
+import { Store } from './store'
 
 interface AppProps {
   store?: Store
