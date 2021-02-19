@@ -68,7 +68,7 @@
     "mobx": "^6.0.3",
     "mobx-react": "^7.0.4",
     "mockdate": "^3.0.2",
-    "np": "^6.2.3",
+    "np": "^7.4.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
