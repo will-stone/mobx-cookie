@@ -1,22 +1,22 @@
-import { inject, observer } from 'mobx-react'
+import { observer } from 'mobx-react-lite'
 import React, { useCallback } from 'react'
 
-import { Store } from './store'
+import type { Store } from './store'
 
 interface AppProps {
-  store?: Store
+  store: Store
 }
 
-const App: React.SFC<AppProps> = ({ store }) => {
+const App: React.FC<AppProps> = observer(({ store }) => {
   const handleSetTimestamp = useCallback(() => {
-    store?.setTimestamp(String(Date.now()))
+    store.setTimestamp(String(Date.now()))
   }, [store])
 
-  const handleRemoveCookie = useCallback(() => store?.unsetTimestamp(), [store])
+  const handleRemoveCookie = useCallback(() => store.unsetTimestamp(), [store])
 
   return (
     <div>
-      <pre>Cookie: {store?.timestamp}</pre>
+      <pre>Cookie: {store.timestamp}</pre>
 
       <div>
         <button onClick={handleSetTimestamp} type="button">
@@ -31,6 +31,6 @@ const App: React.SFC<AppProps> = ({ store }) => {
       </div>
     </div>
   )
-}
+})
 
-export default inject('store')(observer(App))
+export default App

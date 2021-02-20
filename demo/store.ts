@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 
 import Cookie from '../src/mobx-cookie'
 
@@ -6,12 +6,7 @@ export class Store {
   cookie: Cookie = new Cookie('cookie')
 
   constructor() {
-    makeObservable(this, {
-      cookie: observable,
-      timestamp: computed,
-      setTimestamp: action,
-      unsetTimestamp: action,
-    })
+    makeAutoObservable(this)
   }
 
   get timestamp(): string | undefined {
@@ -19,7 +14,7 @@ export class Store {
   }
 
   setTimestamp(value: string): void {
-    this.cookie.set(value, { expires: new Date(Date.now() + 10_000) })
+    this.cookie.set(value, { expires: new Date(Date.now() + 5000) })
   }
 
   unsetTimestamp(): void {
