@@ -95,6 +95,7 @@
     ]
   },
   "np": {
+    "yarn": false,
     "contents": "pkg"
   }
 }
