@@ -80,17 +80,22 @@ describe('mobx-cookie', () => {
   })
 
   it('calls remove method when expiry is up', () => {
-    const { mobxCookie } = setup()
+    const { mobxCookie, COOKIE_NAME, mockJsCookie } = setup()
     const VALUE = 'VALUE'
     const options = {
       expires: new Date(
         'Tue Jan 02 2018 00:00:10 GMT+0000 (Greenwich Mean Time)',
       ),
     }
-    jest.spyOn(mobxCookie, 'remove').mockImplementation()
     mobxCookie.set(VALUE, options)
+    expect(mockJsCookie.remove).not.toHaveBeenCalled()
+    expect(mobxCookie.value).toBe(VALUE)
+    expect(mobxCookie._timeout).toBeDefined()
     jest.runAllTimers()
-    expect(mobxCookie.remove).toHaveBeenCalledTimes(1)
+    expect(mockJsCookie.remove).toHaveBeenCalledWith(COOKIE_NAME)
+    expect(mockJsCookie.remove).toHaveBeenCalledWith(`${COOKIE_NAME}-expires`)
+    expect(mobxCookie.value).toBeUndefined()
+    expect(mobxCookie._timeout).toBeUndefined()
   })
 
   it('removes cookie', () => {
