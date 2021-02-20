@@ -1,6 +1,6 @@
 {
   "name": "mobx-cookie",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Syncs a cookie's value with a MobX observable, allowing observers to react to its changes.",
   "repository": "https://github.com/will-stone/mobx-cookie.git",
   "license": "MIT",
@@ -96,6 +96,6 @@
   },
   "np": {
     "yarn": false,
-    "contents": "pkg"
+    "contents": "./pkg"
   }
 }
