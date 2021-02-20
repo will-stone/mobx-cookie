@@ -11,7 +11,7 @@
 // A simple, lightweight JavaScript API for handling browser cookies
 import * as jsCookie from 'js-cookie'
 // Simple, scalable state management
-import { action, extendObservable, makeObservable } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 
 const DAY_IN_MS = 86_400_000
 
@@ -48,27 +48,20 @@ class MobxCookie {
   _timeout?: NodeJS.Timeout = undefined
 
   constructor(name: string) {
+    makeAutoObservable(this)
+
     // name of set cookie
     this._name = name
 
-    extendObservable(this, {
-      // observable to keep in-sync with cookie value
-      value: jsCookie.get(name),
-    })
+    this.value = jsCookie.get(name)
 
     // Sync Timeout
     // Start timer if an _expires_ cookie exists.
     const expires = jsCookie.get(`${this._name}-expires`)
     if (expires) {
-      this._timeout = setTimeout(() => {
-        this.remove()
-      }, expiresToMs(new Date(expires)))
+      const ms = expiresToMs(new Date(expires))
+      this._timeout = setTimeout(() => this.remove(), ms)
     }
-
-    makeObservable(this, {
-      set: action,
-      remove: action,
-    })
   }
 
   /**
@@ -90,9 +83,8 @@ class MobxCookie {
       jsCookie.set(`${this._name}-expires`, expires, {
         expires: options.expires,
       })
-      this._timeout = setTimeout(() => {
-        this.remove()
-      }, expiresToMs(options.expires))
+      const ms = expiresToMs(options.expires)
+      this._timeout = setTimeout(() => this.remove(), ms)
     }
   }
 
