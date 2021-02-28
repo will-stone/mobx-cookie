@@ -36,11 +36,10 @@
   "prettier": "@will-stone/prettier-config",
   "eslintConfig": {
     "extends": [
-      "@will-stone/eslint-config",
+      "@will-stone/eslint-config/typescript",
       "@will-stone/eslint-config/node",
       "@will-stone/eslint-config/react",
-      "@will-stone/eslint-config/jest",
-      "@will-stone/eslint-config/typescript"
+      "@will-stone/eslint-config/jest"
     ]
   },
   "jest": {
@@ -62,9 +61,9 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react-refresh": "^1.1.0",
-    "@will-stone/eslint-config": "^1.32.0",
+    "@will-stone/eslint-config": "^2.0.0",
     "@will-stone/prettier-config": "^3.1.0",
-    "eslint": "^7.20.0",
+    "eslint": "^7.21.0",
     "husky": "^5.0.9",
     "jest": "^26.6.3",
     "lint-staged": "^10.2.6",
