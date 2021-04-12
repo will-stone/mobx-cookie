@@ -9,7 +9,9 @@
   "scripts": {
     "prebuild": "rimraf ./pkg",
     "build": "npx @pika/pack build",
-    "prepare": "husky install",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
     "lint": "eslint . --ignore-path .gitignore",
     "prerelease": "npm run lint && npm run typecheck",
     "release": "np",
@@ -69,6 +71,7 @@
     "mobx-react-lite": "^3.2.0",
     "mockdate": "^3.0.2",
     "np": "^7.4.0",
+    "pinst": "^2.1.6",
     "prettier": "^2.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
