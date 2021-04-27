@@ -61,7 +61,7 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react-refresh": "^1.1.0",
-    "@will-stone/eslint-config": "^2.3.0",
+    "@will-stone/eslint-config": "^2.7.0",
     "@will-stone/prettier-config": "^4.0.0",
     "eslint": "^7.24.0",
     "husky": "^6.0.0",
