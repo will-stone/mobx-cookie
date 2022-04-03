@@ -5,6 +5,10 @@
 Synchronises a cookie's value with a MobX observable, allowing observers to
 react to its changes.
 
+**MobX-Cookie is no longer maintained. If you'd like to maintain a fork, please
+[get in contact with me](https://wstone.uk), and I can update this notice to
+include a link to your project.**
+
 # Install
 
 ```bash
